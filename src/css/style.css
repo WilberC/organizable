@@ -1,4 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+::-webkit-input-placeholder { color: rgba(255, 255, 255, 0.75);}
+
+:-moz-placeholder { /* Firefox 18- */ color: rgba(255, 255, 255, 0.75);  }
+
+::-moz-placeholder { /* Firefox 19+ */ color: rgba(255, 255, 255, 0.75); }
+
+:-ms-input-placeholder { color: rgba(255, 255, 255, 0.75); }
 
 * {
   font-family: "Roboto", sans-serif;
@@ -12,6 +20,7 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+  overflow: hidden;
 }
 
 #header,
@@ -25,7 +34,6 @@
 #boards__tiles {
   display: grid;
   grid-template-columns: repeat(3, 0.3fr);
-  /* gap: 10px; */
   grid-auto-rows: 110px;
 }
 
@@ -85,4 +93,127 @@
   user-select: none;
   width: 12px;
   height: 12px;
+}
+
+#create_board__screen {
+  transition: 100ms;
+  width: 12000px;
+  position: fixed;
+  height: 4000px;
+  background: rgba(63, 63, 63, 0.8);
+  z-index: 2;
+}
+
+.create_board__form {
+  width: 200px;
+  height: 70px;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 10px 5px 5px 0;
+  transition: 200ms ease-in-out;
+}
+
+.create_board__form__group {
+  display: flex;
+  width: 154px;
+  height: 20px;
+}
+
+#create_board__form__title {
+  padding: 0px 4px;
+  width: 170px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.25);;
+  outline: none;
+  border: none;
+}
+
+.btn-icon {
+  background: transparent;
+  height: auto;
+  outline: none;
+  border: none;
+}
+
+.btn-clear-board-title {
+  font-size: 24px;
+  color: #fff;
+  align-self: center;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.btn {
+  border: none;
+  border-radius: 3px;
+  background: #F4F5F7;
+  padding: 5px;
+}
+
+.create_board {
+  margin: 0 auto;
+  height: 100%;
+  width: 700px;
+}
+
+.create_board__colors {
+  display: grid;
+  grid-template-columns: repeat(3, 25px);
+  grid-template-rows: repeat(3, 25px);
+  position: relative;
+  top: -101px;
+  left: 210px;
+}
+
+.create_board__colors_color {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.disable_body_scroll {
+  height: 100vh;
+  overflow-y: hidden;
+  /*padding-right: 15px;*/
+}
+
+
+.color-1{
+  background: #0079BF;
+}
+
+.color-2{
+  background: #D29034;
+}
+
+.color-3{
+  background: #519839;
+}
+
+.color-4{
+  background: #B04632;
+}
+
+.color-5{
+  background: #89609E;
+}
+
+.color-6 {
+  background: #CD5A90;
+}
+
+.color-7{
+  background: #4BBF6B;
+}
+
+.color-8{
+  background: #0AAECB;
+}
+
+.color-9{
+  background: #838C90;
 }

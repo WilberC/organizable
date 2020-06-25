@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Organizable</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <div id="app">
-<!--      <div id="header">-->
-<!--        <div class="header__title">Your Starred Boards</div>-->
-<!--        <div class="header__body"></div>-->
-<!--      </div>-->
-      <div id="boards">
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div id="app">
+    <div id="create_board__screen">
+        <div class="create_board">
+            <div class="create_board__form color-1">
+                <div class="create_board__form__group">
+                    <input type="text" id="create_board__form__title" placeholder="Board title">
+                    <button id="create_board__form__close" class="btn-icon btn-clear-board-title">&times;</button>
+                </div>
+            </div>
+            <button id="btn-create-board" class="btn">Create Board</button>
+            <div class="create_board__colors">
+                <div class="create_board__colors_color color-1"></div>
+                <div class="create_board__colors_color color-2"></div>
+                <div class="create_board__colors_color color-3"></div>
+                <div class="create_board__colors_color color-4"></div>
+                <div class="create_board__colors_color color-5"></div>
+                <div class="create_board__colors_color color-6"></div>
+                <div class="create_board__colors_color color-7"></div>
+                <div class="create_board__colors_color color-8"></div>
+                <div class="create_board__colors_color color-9"></div>
+            </div>
+        </div>
+    </div>
+    <!--      <div id="header">-->
+    <!--        <div class="header__title">Your Starred Boards</div>-->
+    <!--        <div class="header__body"></div>-->
+    <!--      </div>-->
+    <div id="boards">
         <div class="boards__title">Your Boards</div>
         <div id="boards__tiles">
-          <div class="boards__tiles__tile boards__tiles__create">Create a new Board</div>
+            <div id="create-board" class="boards__tiles__tile boards__tiles__create">Create a new Board</div>
         </div>
-      </div>
     </div>
+</div>
 
-    <script src="app.js"></script>
-  </body>
+<script src="app.js"></script>
+</body>
 </html>
