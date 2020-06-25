@@ -31,7 +31,7 @@
   width: 700px;
 }
 
-#boards__tiles {
+#boards__tiles, #header__starred_boards {
   display: grid;
   grid-template-columns: repeat(3, 0.3fr);
   grid-auto-rows: 110px;
@@ -96,6 +96,7 @@
 }
 
 #create_board__screen {
+  display: none;
   transition: 100ms;
   width: 12000px;
   position: fixed;
