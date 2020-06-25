@@ -147,7 +147,7 @@ const unstarBoard = index => {
 const starBoard = index => {
     const boards = getBoards();
     const board = boards[index]
-    board.isStarred = false;
+    board.isStarred = true;
     removeBoard(board.id);
     saveBoards(boards);
     drawStarredBoard(board);
@@ -156,6 +156,7 @@ const starredBoardHandler = e => {
     const element = getButtonsElementFromButtonEvent(e);
     const id = element.dataset.id;
     const index = getBoards().findIndex(el => el.id == id);
+
     if(getButtonsElementFromButtonEvent(e).lastElementChild.classList.contains('starred')) {
         return unstarBoard(index);
     }
