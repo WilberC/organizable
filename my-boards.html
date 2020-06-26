@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>My Boards</title>
     <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="src/css/style.css"/>
+
 </head>
 <body>
 <header class="main-header">
@@ -19,7 +21,47 @@
         </ul>
     </nav>
     <main class="main-content">
+        <div id="app">
+            <div id="create_board__screen">
+                <div class="create_board">
+                    <div class="create_board__content">
+                        <div class="create_board__form color-1">
+                            <div class="create_board__form__group">
+                                <input type="text" id="create_board__form__title" placeholder="Board title"/>
+                                <button id="create_board__form__close" class="btn-icon btn-clear-board-title">&times;
+                                </button>
+                            </div>
+                        </div>
+                        <button id="btn-create-board" class="btn-board">Create Board</button>
+                        <div class="create_board__colors">
+                            <div class="create_board__colors_color color-1"></div>
+                            <div class="create_board__colors_color color-2"></div>
+                            <div class="create_board__colors_color color-3"></div>
+                            <div class="create_board__colors_color color-4"></div>
+                            <div class="create_board__colors_color color-5"></div>
+                            <div class="create_board__colors_color color-6"></div>
+                            <div class="create_board__colors_color color-7"></div>
+                            <div class="create_board__colors_color color-8"></div>
+                            <div class="create_board__colors_color color-9"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="header">
+                <div class="header__title">Your Starred Boards</div>
+                <div id="header__starred_boards"></div>
+            </div>
+            <div id="boards">
+                <div class="boards__title">Your Boards</div>
+                <div id="boards__tiles">
+                    <div id="create-board" class="boards__tiles__tile boards__tiles__create">Create a new Board</div>
+                </div>
+            </div>
+        </div>
+
+        <script src="src/app.js"></script>
     </main>
+
 </div>
 <script type="module" src="src/js/main.js"></script>
 <script src="src/js/utils/valid_user_logged.js"></script>
