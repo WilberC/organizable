@@ -9,5 +9,4 @@ window.addEventListener('load', () => {
     Boards.createBoardListener();
     Boards.modalListeners();
 
-    // const check = () => Boards.checkEmptyStarredContainer();
 });

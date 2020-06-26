@@ -96,7 +96,6 @@ const filterNoStarredBoards = board => !board.isStarred
 // TODO: Revisar esto y ver si se puede refactorizar
 const drawStarredBoards = () => {
     const boards = getBoards().filter(filterStarredBoards);
-    console.log(boards)
     if(boards.length === 0) return renderEmptyStarredMessage();
     boards.forEach(drawStarredBoard);
 };
@@ -104,8 +103,14 @@ const drawStarredBoards = () => {
 const drawBoard = board => {
     const boardElement = BoardElement(board);
     getElement('#boards__tiles').insertBefore(boardElement, getElement('.boards__tiles__create'));
-    starredBoardListeners();
+    boardListeners();
 };
+
+const drawClosedBoard = board => {
+    const boardElement = ClosedBoardElement(board);
+    getElement('#boards__tiles').insertBefore(boardElement, getElement('.boards__tiles__create'));
+};
+
 const drawBoards = () => {
     const boards = getBoards();
     if(!boards) return;
@@ -125,10 +130,35 @@ const getButtonsElementFromButtonEvent = e => {
     return tagName === 'img' ? e.target.parentElement.parentElement : e.target.parentElement;
 }
 
+const getClosedBoards = () => JSON.parse(localStorage.getItem('closedBoards')) || [];
+const saveClosedBoards  = boards => localStorage.setItem('closedBoards', JSON.stringify(boards));
+
+const closeBoard = board => {
+    const localBoards = getClosedBoards();
+    localBoards.push(board);
+    saveClosedBoards(localBoards);
+    removeBoard(board.id);
+}
+
 const closeBoardHandler = e => {
     const id = getButtonsElementFromButtonEvent(e).dataset.id;
-    console.log(id);
+    const localBoards = getBoards();
+    const closedBoard = localBoards.find( el => String(el.id) === String(id))
+    const boards = localBoards.filter(el => String(el.id) !== String(id));
+    saveBoards(boards);
+    closeBoard(closedBoard);
 };
+
+const boardListeners = () => {
+    starredBoardListeners();
+    closeBoardListeners();
+}
+
+const closedBoardListeners = () => {
+    deleteBoardListeners();
+    restoreBoardListeners();
+}
+
 const closeBoardListeners = () => addListeners('.button__close_board', 'click', closeBoardHandler);
 
 const renderEmptyStarredMessage = () => {
@@ -159,6 +189,7 @@ const unstarBoard = index => {
     checkEmptyStarredContainer();
     saveBoards(boards);
     drawBoard(board);
+    boardListeners();
 
 };
 const starBoard = index => {
@@ -169,6 +200,7 @@ const starBoard = index => {
     saveBoards(boards);
     removeEmptyStarredMessage();
     drawStarredBoard(board);
+    boardListeners();
 }
 const starredBoardHandler = e => {
     const element = getButtonsElementFromButtonEvent(e);
@@ -180,7 +212,40 @@ const starredBoardHandler = e => {
 
     starBoard(index);
 };
+
+const restoreBoard = id => {
+    const board = getClosedBoards().find(el => String(el.id) === String(id));
+    const closedBoards = getClosedBoards().filter(el => String(el.id) !== String(id));
+    saveClosedBoards(closedBoards);
+    removeBoard(id);
+    saveBoard(board);
+};
+
 const starredBoardListeners = () => addListeners('.button__star_board', 'click', starredBoardHandler);
+
+
+
+const deleteBoard = id => {
+    saveClosedBoards(getClosedBoards().filter(el => String(el.id) !== String(id)))
+}
+
+const deleteBoardHandler = e => {
+    const element = getButtonsElementFromButtonEvent(e);
+    const id = element.dataset.id;
+    deleteBoard(id);
+    removeBoard(id);
+}
+
+const deleteBoardListeners = () => addListeners('.button__delete_board', 'click', deleteBoardHandler);
+
+const restoreBoardHandler = e => {
+    const element = getButtonsElementFromButtonEvent(e);
+    const id = element.dataset.id;
+    restoreBoard(id);
+
+};
+const restoreBoardListeners = () => addListeners('.button__restore_board', 'click', restoreBoardHandler);
+
 
 const BoardElement = ({id, title, color}) => {
     return (
@@ -205,6 +270,16 @@ const StarredBoardElement = ({id, title, color}) => {
     return element;
 };
 
+const ClosedBoardElement = ({id, title, color}) => {
+    return (
+        stringToHtml(
+            closedBoardTemplate.replace(/:id:/g, id)
+                .replace(/:title:/g, title)
+                .replace(/:color:/, color)
+        )
+    );
+};
+
 const stringToHtml = string => {
     const parent = document.createElement('div');
     parent.innerHTML = string;
@@ -222,13 +297,29 @@ const boardTemplate = `
         </div>
     </div>  `;
 
+// language=HTML
+const closedBoardTemplate = `
+        <div class="boards__tiles__tile :color:"><p class="boards__tiles__tile__title" data-id="board-:id:">:title:</p>
+            <div class="boards__tiles__tile__hover_content">
+                <div class="boards__tile__tile__hover_content__icons" data-id=":id:">
+                    <button class="button__delete_board" title="Delete Board"><img src="src/img/icons/delete.png" alt=""/>
+                    </button>
+                    <button class="button__restore_board" title="Restore Board"><img src="src/img/icons/open.png" alt=""/>
+                    </button>
+                </div>
+            </div>
+        </div>  `;
 
 export {
+    drawClosedBoard,
     drawBoards,
     drawStarredBoards,
     starredBoardListeners,
     closeBoardListeners,
     addColorListeners,
     createBoardListener,
-    modalListeners
+    modalListeners,
+    getClosedBoards,
+    saveClosedBoards,
+    closedBoardListeners
 }
