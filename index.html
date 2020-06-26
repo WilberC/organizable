@@ -2,24 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Organizable</title>
+    <title>Login</title>
     <link rel="stylesheet" href="src/styles/main.css">
 </head>
 <body>
 <header class="main-header">
     <img class="main-header-logo" src="src/assets/organizable_logo.png"/>
 </header>
-<!--<div class="mix-nav-main">
-    <nav class="main-nav">
-        <ul class="main-nav-links">
-            <li class="active-link"><a href="./my-boards.html">My boards</a></li>
-            <li><a href="./closed-boards.html">Closed boards</a></li>
-            <li><a href="my-profile.html">My Profile</a></li>
-            <li><a href="login.html">Log out</a></li>
-        </ul>
-    </nav>
-    <main class="main-content">asdasd</main>
-</div>-->
-<script type="module" src="src/js/main.js"></script>
+<main class="main-content auth-main">
+    <form id="login-form" class="auth-form">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success" id="btn-login">Login</button>
+        <br>
+        <a class="create-account-link" href="./sign-up.html">Create an Account</a>
+    </form>
+</main>
+<script src="src/js/views/login_request.js"></script>
+<script src="src/js/views/login.js"></script>
 </body>
 </html>

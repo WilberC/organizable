@@ -1,0 +1,62 @@
+/* ---- Login CSS ----*/
+.auth-main {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-form {
+    width: 450px;
+    background: #F4F5F7;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form-group:not(:last-child) {
+    margin-bottom: 6px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-control {
+    border: 1px solid #0079BF;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.btn {
+    color: #FFFF;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 20px;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.btn-success {
+    background: #5AAC44;
+}
+
+.create-account-link {
+    text-decoration: none;
+    color: #0079BF;
+    font-size: 14px;
+    margin-top: 17px;
+    margin-bottom: 50px;
+}
+
+.form-group:first-child {
+    margin-top: 50px;
+}

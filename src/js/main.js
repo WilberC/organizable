@@ -1,6 +1,5 @@
-// import {currentHtmlName as htmlName} from './utils/current_html_name.js'
-// console.log(htmlName())
-import {renderMenu} from "./utils/render_nav_menu.js";
+import {logoutLinkClick} from "./views/logout.js";
 
-document.getElementsByTagName('body')[0].innerHTML = renderMenu
-console.log(renderMenu)
+const logoutLink = document.getElementById('log-out')
+
+logoutLink.onclick = () => logoutLinkClick()

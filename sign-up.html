@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Sign-Up</title>
+    <link rel="stylesheet" href="src/styles/main.css">
 </head>
 <body>
-
+<header class="main-header">
+    <img class="main-header-logo" src="src/assets/organizable_logo.png"/>
+</header>
+<main class="main-content auth-main">
+    <form id="sign-up-form" class="auth-form">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" id="first_name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" id="last_name" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success" id="btn-sign-up">Create!</button>
+        <br>
+        <a class="create-account-link" href="./index.html">or login with existing user</a>
+    </form>
+</main>
+<script src="src/js/views/login_request.js"></script>
+<script src="src/js/views/sign-up.js"></script>
 </body>
 </html>
