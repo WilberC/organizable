@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Boards</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="src/css/style.css"/>
+
+</head>
+<body>
+<header class="main-header">
+    <img class="main-header-logo" src="src/assets/organizable_logo.png"/>
+</header>
+<div class="mix-nav-main">
+    <nav class="main-nav">
+        <ul class="main-nav-links">
+            <li class="active-link"><a href="./my-boards.html">My boards</a></li>
+            <li><a href="./closed-boards.html">Closed boards</a></li>
+            <li><a href="./my-profile.html">My Profile</a></li>
+            <li><a id="log-out">Log out</a></li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <div id="app">
+            <div id="create_board__screen">
+                <div class="create_board">
+                    <div class="create_board__content">
+                        <div class="create_board__form color-1">
+                            <div class="create_board__form__group">
+                                <input type="text" id="create_board__form__title" placeholder="Board title"/>
+                                <button id="create_board__form__close" class="btn-icon btn-clear-board-title">&times;
+                                </button>
+                            </div>
+                        </div>
+                        <button id="btn-create-board" class="btn-board">Create Board</button>
+                        <div class="create_board__colors">
+                            <div class="create_board__colors_color color-1"></div>
+                            <div class="create_board__colors_color color-2"></div>
+                            <div class="create_board__colors_color color-3"></div>
+                            <div class="create_board__colors_color color-4"></div>
+                            <div class="create_board__colors_color color-5"></div>
+                            <div class="create_board__colors_color color-6"></div>
+                            <div class="create_board__colors_color color-7"></div>
+                            <div class="create_board__colors_color color-8"></div>
+                            <div class="create_board__colors_color color-9"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="header">
+                <div class="header__title">Your Starred Boards</div>
+                <div id="header__starred_boards"></div>
+            </div>
+            <div id="boards">
+                <div class="boards__title">Your Boards</div>
+                <div id="boards__tiles">
+                    <div id="create-board" class="boards__tiles__tile boards__tiles__create">Create a new Board</div>
+                </div>
+            </div>
+        </div>
+
+        <script src="src/app.js"></script>
+    </main>
+
+</div>
+<script type="module" src="src/js/main.js"></script>
+</body>
+</html>

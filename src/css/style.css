@@ -16,7 +16,7 @@
 }
 
 #app {
-  background: #e5e5e5;
+  /*background: #e5e5e5;*/
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -100,6 +100,7 @@
   transition: 100ms;
   width: 12000px;
   position: fixed;
+  top: 0;
   height: 4000px;
   background: rgba(63, 63, 63, 0.8);
   z-index: 2;
@@ -112,6 +113,11 @@
   border-radius: 3px;
   margin: 10px 5px 5px 0;
   transition: 200ms ease-in-out;
+}
+
+.create_board__content {
+  margin: 0 auto;
+  width: 60vh;
 }
 
 .create_board__form__group {
@@ -147,7 +153,7 @@
   margin-left: 5px;
 }
 
-.btn {
+.btn-board {
   border: none;
   border-radius: 3px;
   background: #F4F5F7;
@@ -155,7 +161,7 @@
 }
 
 .create_board {
-  margin: 0 auto;
+  margin: 64px auto;
   height: 100%;
   width: 700px;
 }
@@ -178,8 +184,7 @@
 
 .disable_body_scroll {
   height: 100vh;
-  overflow-y: hidden;
-  /*padding-right: 15px;*/
+  overflow: hidden;
 }
 
 
