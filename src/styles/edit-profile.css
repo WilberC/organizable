@@ -1,0 +1,24 @@
+.btn-group {
+    margin-bottom: 50px;
+}
+
+.btn-secondary {
+    background: #EBECF0;
+    color: #172B4D !important;
+}
+
+.btn-danger {
+    background: #CF513D;
+}
+
+.btn-group .btn-secondary {
+    margin-right: 35px;
+}
+
+.btn-group .btn-success {
+    margin-right: 35px;
+}
+
+.hide {
+    display: none !important;
+}
