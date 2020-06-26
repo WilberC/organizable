@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Board</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+<header class="main-header">
+    <img class="main-header-logo" src="src/assets/organizable_logo.png"/>
+</header>
+<main class="main-content-board">
+    <header class="main-content-board-header">
+        <h1 class="main-content-board-header-text">Codeable</h1>
+        <div class="star-icon"><img src="src/img/icons/star_board.png"/></div>
+        <div class="close-board-icon"><img src="src/img/icons/close_board.png"/></div>
+    </header>
+    <section class="columns-board">
+        <div class="list-content-item active-column">
+            <header class="active-column-header">
+                <h2>To Do</h2>
+                <img src="src/img/icons/close_colum_item.png"/>
+            </header>
+            <div class="active-column-items-container">
+                <div class="active-column-item">
+                    <p>Add animations</p>
+                </div>
+                <div class="active-column-item">
+                    <p>Refactor functions</p>
+                </div>
+                <div class="active-column-item">
+                    <p>Improve a11y</p>
+                </div>
+                <div class="add-card-item">
+                    <input type="text" class="form-control card-item-input"
+                           placeholder="Enter a title for this card...">
+                    <div class="save-card-item-options-group">
+                        <button type="button" class="btn btn-success save-card-item-btn">Add Card</button>
+                        <img src="src/img/icons/cancel_add_card_item.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list-content-item">
+            <div class="add-item-list">
+                <p>Add a list</p>
+            </div>
+        </div>
+    </section>
+</main>
+<!--<script src="src/js/views/login_request.js"></script>-->
+<script src="src/js/views/board.js"></script>
+</body>
+</html>

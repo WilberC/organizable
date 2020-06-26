@@ -2,6 +2,7 @@
 @import "./nav.css";
 @import "./login.css";
 @import "./edit-profile.css";
+@import "./board.css";
 
 body {
     font-family: 'Roboto', sans-serif;
