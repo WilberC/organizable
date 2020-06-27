@@ -111,11 +111,169 @@
 }
 
 
+.modal {
+    background-color: rgba(63, 63, 63, 0.8);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
 
+.modal-content {
+    background: #F4F5F7;
+    width: 768px;
+    padding: 15px 20px 30px;
+    margin: 10% auto;
+    position: relative;
+    border-radius: 4px;
+}
 
+.modal-content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
+.modal-content-header span {
+    margin-left: 40px;
+    font-weight: bold;
+    font-size: 16px;
+}
 
+.modal-content-header img {
+    cursor: pointer;
+}
 
+.modal-element-title {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.modal-content-data {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.check-list-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.modal-btn {
+    margin: 0;
+}
+
+.modal-content-check-list-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal-content-label-item {
+    display: inline-block;
+    padding: 5px 30px 5px 5px;
+    border-radius: 3px;
+    color: #FFFFFF;
+}
+
+.modal-content-label-item:not(:last-child) {
+    margin-right: 12px;
+    margin-bottom: 5px;
+}
+
+.modal-content-labels {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.modal-content-description-text {
+    margin-top: 9px;
+    margin-bottom: 9px;
+}
+
+.modal-content-check-list-item-description:not(:last-child) {
+    margin-bottom: 14px;
+}
+
+.red-label {
+    background: #EB5A46;
+}
+
+.green-label {
+    background: #61BD4F;
+}
+
+.yellow-label {
+    background: #F2D600;
+}
+
+.purple-label {
+    background: #C377E0;
+}
+
+.blue-label {
+    background: #0079BF;
+}
+
+.orange-label {
+    background: #FF9F1A;
+}
+
+.modal-content-option-label-color {
+    width: 80px;
+    border-radius: 3px;
+    margin-right: 9px;
+}
+
+.modal-content-option-label-color::after {
+    content: '.';
+    visibility: hidden;
+}
+
+.modal-content-option-label-item-group {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.modal-content-option-label-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px 5px;
+}
+
+.create-label-btn {
+    text-align: center;
+    width: 100%;
+}
+
+.modal-content-option-check-list-create {
+    background: #EBECF0;
+    border-radius: 3px;
+    width: 100%;
+    padding: 8px;
+}
+
+.btn-warning {
+    background: rgba(235, 90, 70, 0.5);
+    text-align: center;
+    width: 100%;
+    color: #172B4D;
+}
+
+.check-list-title {
+    margin: 0;
+    color: #172B4D;
+    font-weight: bold;
+    font-size: 12px;
+}
 
 
 

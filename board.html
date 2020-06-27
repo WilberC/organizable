@@ -48,6 +48,95 @@
         </div>
     </section>
 </main>
+<div class="modal hide">
+    <div class="modal-content">
+        <div class="modal-content-header">
+            <span>Login & Logout</span>
+            <img src="src/img/icons/cancel_add_card_item.png"/>
+        </div>
+        <div class="modal-content-data">
+            <div class="modal-content-main">
+                <div class="modal-content-label">
+                    <p class="modal-element-title">LABELS</p>
+                    <div class="modal-content-labels">
+                        <div class="modal-content-label-item red-label">Urgent</div>
+                    </div>
+                </div>
+                <div class="modal-content-description">
+                    <p class="modal-element-title">DESCRIPTION</p>
+                    <p class="modal-content-description-text">This is the description of the card. It could be long or
+                        short.</p>
+                    <button type="button" class="btn btn-secondary modal-btn">Edit</button>
+                </div>
+                <div class="modal-content-check-list">
+                    <p class="modal-element-title">CHECKLISTS</p>
+                    <div class="modal-content-check-list-item">
+                        <div class="modal-content-check-list-item-header">
+                            <p class="check-list-title">Login tasks</p>
+                            <button type="button" class="btn btn-secondary modal-btn">Delete</button>
+                        </div>
+                        <div class="modal-content-check-list-item-description">
+                            <div class="check-list-group">
+                                <input type="checkbox" checked>
+                                <label>Analize API</label>
+                            </div>
+                            <div class="check-list-group">
+                                <input type="checkbox" checked>
+                                <label>Create HTML and CSS</label>
+                            </div>
+                            <div class="check-list-group">
+                                <input type="checkbox">
+                                <label>Make fetch request</label>
+                            </div>
+                            <button type="button" class="btn btn-secondary modal-btn">Add Item</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-content-options">
+                <div class="modal-content-option-label">
+                    <p>LABELS</p>
+                    <div class="modal-content-option-label-items">
+                        <div class="modal-content-option-label-item-group">
+                            <div class="modal-content-option-label-color green-label"></div>
+                            <img src="src/img/icons/edit_btn.png"/>
+                        </div>
+                        <div class="modal-content-option-label-item-group">
+                            <div class="modal-content-option-label-color red-label"></div>
+                            <img src="src/img/icons/edit_btn.png"/>
+                        </div>
+                        <div class="modal-content-option-label-item-group">
+                            <div class="modal-content-option-label-color yellow-label"></div>
+                            <img src="src/img/icons/edit_btn.png"/>
+                        </div>
+                        <div class="modal-content-option-label-item-group">
+                            <div class="modal-content-option-label-color purple-label"></div>
+                            <img src="src/img/icons/edit_btn.png"/>
+                        </div>
+                        <div class="modal-content-option-label-item-group">
+                            <div class="modal-content-option-label-color orange-label"></div>
+                            <img src="src/img/icons/edit_btn.png"/>
+                        </div>
+                        <div class="modal-content-option-label-item-group">
+                            <div class="modal-content-option-label-color blue-label"></div>
+                            <img src="src/img/icons/edit_btn.png"/>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary create-label-btn">Create a new label</button>
+                </div>
+                <div class="modal-content-option-check-list">
+                    <p>CHECKLISTS</p>
+                    <div class="modal-content-option-check-list-create">
+                        <input type="text" class="form-control" placeholder="Checklist...">
+                        <br>
+                        <button type="button" class="btn btn-success">Add</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-warning">Delete Card</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--<script src="src/js/views/login_request.js"></script>-->
 <script src="src/js/views/board.js"></script>
 </body>
