@@ -1,4 +1,4 @@
-import * as Boards from "./boardsUtils.js" ;
+import * as Boards from "./js/boards/boardsUtils.js" ;
 
 window.addEventListener('load', () => {
     Boards.drawBoards();
@@ -8,5 +8,6 @@ window.addEventListener('load', () => {
     Boards.addColorListeners();
     Boards.createBoardListener();
     Boards.modalListeners();
+    Boards.onClickBoardHover();
 
 });

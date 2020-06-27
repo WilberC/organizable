@@ -72,7 +72,9 @@ const modalListeners = () => {
     screenModalListener();
     ESCListener();
 }
-const Board = (color, title, isStarred = false) => { return {id: Id(),color, title, isStarred} }
+const Board = (color, title, isStarred = false, isClosed = false) => {
+    return {id: Id(),color, title, isStarred, isClosed}
+};
 
 const changeCardFormColor = color => {
     getElement('.create_board__form').setAttribute('class', `create_board__form ${color}`);
@@ -112,7 +114,7 @@ const drawClosedBoard = board => {
 };
 
 const drawBoards = () => {
-    const boards = getBoards();
+    const boards = getBoards().filter(filterOpenedBoards);
     if(!boards) return;
     boards.filter(filterNoStarredBoards).forEach(drawBoard);
 }
@@ -130,34 +132,38 @@ const getButtonsElementFromButtonEvent = e => {
     return tagName === 'img' ? e.target.parentElement.parentElement : e.target.parentElement;
 }
 
-const getClosedBoards = () => JSON.parse(localStorage.getItem('closedBoards')) || [];
-const saveClosedBoards  = boards => localStorage.setItem('closedBoards', JSON.stringify(boards));
-
-const closeBoard = board => {
-    const localBoards = getClosedBoards();
-    localBoards.push(board);
-    saveClosedBoards(localBoards);
-    removeBoard(board.id);
-}
+const filterClosedBoards = board => board.isClosed;
+const filterOpenedBoards = board => !board.isClosed;
+const getClosedBoards = () => getBoards().filter(filterClosedBoards);
+const saveClosedBoards  = saveBoards;
 
 const closeBoardHandler = e => {
     const id = getButtonsElementFromButtonEvent(e).dataset.id;
     const localBoards = getBoards();
-    const closedBoard = localBoards.find( el => String(el.id) === String(id))
-    const boards = localBoards.filter(el => String(el.id) !== String(id));
-    saveBoards(boards);
-    closeBoard(closedBoard);
+    const index = localBoards.findIndex( el => String(el.id) === String(id))
+    localBoards[index].isClosed = true
+    saveBoards(localBoards);
+    removeBoardElement(id);
 };
 
 const boardListeners = () => {
     starredBoardListeners();
     closeBoardListeners();
+    onClickBoardHover();
 }
 
 const closedBoardListeners = () => {
     deleteBoardListeners();
     restoreBoardListeners();
+    onClickBoardHover();
 }
+
+const BoardHoverHandler = e => {
+    const target = e.target;
+    if(target.tagName !== 'DIV') return;
+    location.href = `${ location.origin }/organizable/board.html?id=${e.target.firstElementChild.dataset.id}`;
+}
+const onClickBoardHover = () => addListeners('.boards__tiles__tile__hover_content', 'click', BoardHoverHandler)
 
 const closeBoardListeners = () => addListeners('.button__close_board', 'click', closeBoardHandler);
 
@@ -177,26 +183,41 @@ const checkEmptyStarredContainer = () => {
     removeEmptyStarredMessage();
 }
 
-const removeBoard = id => {
+const removeBoardElement = id => {
     getElement(`[data-id=board-${id}]`).parentElement.remove();
 }
 
-const unstarBoard = index => {
+// const unstarBoardWithinIt = (id) => {
+//     const boards = getBoards();
+//     const index = boards.findIndex(el => String(el.id) === String(id))
+//     boards[index].isStarred = false;
+//     saveBoards(boards);
+// }
+
+const unstarBoard = (index, isWithinBoard = false) => {
+    if(isWithinBoard) return unstarBoardWithinIt(index);
     const boards = getBoards();
     const board = boards[index]
     board.isStarred = false;
-    removeBoard(board.id);
+    removeBoardElement(board.id);
     checkEmptyStarredContainer();
     saveBoards(boards);
     drawBoard(board);
     boardListeners();
+}
 
-};
-const starBoard = index => {
+const starBoardWithinIt = (id) => {
+    const boards = getBoards();
+    const index = boards.findIndex(el => String(el.id) === String(id))
+    boards[index].isStarred = !boards[index].isStarred;
+    saveBoards(boards);
+}
+const starBoard = (index, isWithinBoard = false) => {
+    if(isWithinBoard) return starBoardWithinIt(index);
     const boards = getBoards();
     const board = boards[index]
     board.isStarred = true;
-    removeBoard(board.id);
+    removeBoardElement(board.id);
     saveBoards(boards);
     removeEmptyStarredMessage();
     drawStarredBoard(board);
@@ -214,11 +235,11 @@ const starredBoardHandler = e => {
 };
 
 const restoreBoard = id => {
-    const board = getClosedBoards().find(el => String(el.id) === String(id));
-    const closedBoards = getClosedBoards().filter(el => String(el.id) !== String(id));
-    saveClosedBoards(closedBoards);
-    removeBoard(id);
-    saveBoard(board);
+    const boards = getBoards();
+    const index = boards.findIndex(el => String(el.id) === String(id));
+    const board = boards[index].isClosed = false;
+    saveBoards(boards);
+    removeBoardElement(id);
 };
 
 const starredBoardListeners = () => addListeners('.button__star_board', 'click', starredBoardHandler);
@@ -226,14 +247,14 @@ const starredBoardListeners = () => addListeners('.button__star_board', 'click',
 
 
 const deleteBoard = id => {
-    saveClosedBoards(getClosedBoards().filter(el => String(el.id) !== String(id)))
+    saveBoards(getBoards().filter(el => String(el.id) !== String(id)))
 }
 
 const deleteBoardHandler = e => {
     const element = getButtonsElementFromButtonEvent(e);
     const id = element.dataset.id;
     deleteBoard(id);
-    removeBoard(id);
+    removeBoardElement(id);
 }
 
 const deleteBoardListeners = () => addListeners('.button__delete_board', 'click', deleteBoardHandler);
@@ -321,5 +342,11 @@ export {
     modalListeners,
     getClosedBoards,
     saveClosedBoards,
-    closedBoardListeners
+    closedBoardListeners,
+    starBoard,
+    unstarBoard,
+    addListeners,
+    onClickBoardHover,
+    getElement,
+    stringToHtml
 }
