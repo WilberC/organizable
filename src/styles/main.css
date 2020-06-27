@@ -48,6 +48,15 @@ body {
     background: #EBECF0;
 }
 
+.hidden {
+    height: 0;
+    visibility: hidden;
+}
+
+.visible {
+
+}
+
 
 
 

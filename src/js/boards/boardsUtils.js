@@ -1,3 +1,7 @@
+String.prototype.toHTML = function () {
+    return stringToHtml(this)
+}
+
 const Id = () => {
     const lastId = state.lastElementId;
     state.updateId();
@@ -169,7 +173,7 @@ const closeBoardListeners = () => addListeners('.button__close_board', 'click', 
 
 const renderEmptyStarredMessage = () => {
     const msg = '<h2 id="starred-empty-message">Nothing, yet</h2>';
-    getElement('#header__starred_boards').append(stringToHtml(msg));
+    getElement('#header__starred_boards').append(msg.toHTML());
 };
 const removeEmptyStarredMessage = () => {
     const msg = getElement('#starred-empty-message');
@@ -269,21 +273,11 @@ const restoreBoardListeners = () => addListeners('.button__restore_board', 'clic
 
 
 const BoardElement = ({id, title, color}) => {
-    return (
-        stringToHtml(
-            boardTemplate.replace(/:id:/g, id)
-                .replace(/:title:/g, title)
-                .replace(/:color:/, color)
-        )
-    );
+    return boardTemplate.replace(/:id:/g, id).replace(/:title:/g, title).replace(/:color:/, color).toHTML()
 };
 
 const StarredBoardElement = ({id, title, color}) => {
-    const element = stringToHtml(
-        boardTemplate.replace(/:id:/g, id)
-            .replace(/:title:/g, title)
-            .replace(/:color:/, color)
-    );
+    const element = boardTemplate.replace(/:id:/g, id).replace(/:title:/g, title).replace(/:color:/, color).toHTML()
 
     const button = element.children[1].firstElementChild.lastElementChild;
     button.classList.add('starred');
@@ -292,13 +286,7 @@ const StarredBoardElement = ({id, title, color}) => {
 };
 
 const ClosedBoardElement = ({id, title, color}) => {
-    return (
-        stringToHtml(
-            closedBoardTemplate.replace(/:id:/g, id)
-                .replace(/:title:/g, title)
-                .replace(/:color:/, color)
-        )
-    );
+    return closedBoardTemplate.replace(/:id:/g, id).replace(/:title:/g, title).replace(/:color:/, color).toHTML()
 };
 
 const stringToHtml = string => {
