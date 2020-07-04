@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Board</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+<header class="main-header">
+    <img class="main-header-logo" src="src/assets/organizable_logo.png"/>
+</header>
+<main class="main-content-board">
+    <header class="main-content-board-header">
+        <h1 class="main-content-board-header-text">Codeable</h1>
+        <div class="star-icon"><img src="src/img/icons/star_board.png"/></div>
+        <div class="close-board-icon"><img src="src/img/icons/close_board.png"/></div>
+    </header>
+    <section class="columns-board">
+        <div class="list-content-item">
+            <div class="add-item-list">
+                <p id="add_list__trigger">Add a list</p>
+                <div id="add_list">
+                    <input type="text" class="form-control card-item-input" id="add_list__title">
+                    <div class="add_list__buttons">
+                        <button id="add_list__btn" class="btn btn-success">Add list</button>
+                        <img id="add_list__btn__close" src="src/img/icons/cancel_add_card_item.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!--<script src="src/js/views/login_request.js"></script>-->
+<script src="src/js/views/board.js" type="module"></script>
+</body>
+</html>
